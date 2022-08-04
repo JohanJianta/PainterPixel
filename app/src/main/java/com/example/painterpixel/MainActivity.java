@@ -82,7 +82,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView tv3 = findViewById(R.id.textView3);
-
+        tv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
 
 
 
