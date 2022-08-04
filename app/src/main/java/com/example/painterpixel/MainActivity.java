@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView tv1 = findViewById(R.id.textView1);
+
+
+
         tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
         TextView tv2 = findViewById(R.id.textView2);
 //        tv2.setOnClickListener(this);
+
+
+        TextView tv3 = findViewById(R.id.textView3);
+
 
 
 
