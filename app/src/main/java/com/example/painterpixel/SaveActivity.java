@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class SaveActivity extends AppCompatActivity {
 
-    static int color;
     Button backbtn;
     int[] listKotak = new int[384];
     int[] textviewid = new int[]{R.id.textView0, R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4, R.id.textView5, R.id.textView6,
@@ -71,16 +70,15 @@ public class SaveActivity extends AppCompatActivity {
 
         for (int i = 0; i < listKotak.length; i++) {
             GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
-            Intent intent = getIntent();
-            gradientDrawable.setColor(color);
+            String color = getIntent().getStringExtra("color");
         }
 
         backbtn = findViewById(R.id.backBtn);
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent intent = new Intent(SaveActivity.this,MainActivity.class);
-                    startActivity(intent);
+                Intent intent = new Intent(SaveActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

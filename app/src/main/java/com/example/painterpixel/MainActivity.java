@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 for (int i = 0; i < listKotak.length; i++) {
-                    int color = getResources().getColor(textviewid[i]);
+                    String color = ((TextView) findViewById(textviewid[i])).getBackground().toString();
                     Intent intent = new Intent(MainActivity.this,SaveActivity.class);
                     intent.putExtra("color", color);
                     startActivity(intent);
