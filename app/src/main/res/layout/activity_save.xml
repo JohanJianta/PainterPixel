@@ -4,31 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SavaActivity">
-
-
-    <Button
-        android:id="@+id/resetBtn"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#B53F49"
-        android:text="Reset"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    android:background="#FFCCCCCC"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/saveBtn"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="20dp"
+        android:id="@+id/backBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:backgroundTint="#4CAF50"
-        android:text="Save"
+        app:layout_constraintDimensionRatio="3:1"
+        android:text="Start New"
+        app:layout_constraintStart_toStartOf="@id/guideline6"
+        app:layout_constraintEnd_toEndOf="@id/guideline12"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView

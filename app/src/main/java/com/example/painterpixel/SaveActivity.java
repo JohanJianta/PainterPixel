@@ -2,20 +2,17 @@ package com.example.painterpixel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class SaveActivity extends AppCompatActivity {
 
-    Button resetbtn, savebtn;
+    static int color;
+    Button backbtn;
     int[] listKotak = new int[384];
     int[] textviewid = new int[]{R.id.textView0, R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4, R.id.textView5, R.id.textView6,
             R.id.textView7, R.id.textView8, R.id.textView9, R.id.textView10, R.id.textView11, R.id.textView12, R.id.textView13, R.id.textView14,
@@ -67,105 +64,24 @@ public class MainActivity extends AppCompatActivity {
             R.id.textView375, R.id.textView376, R.id.textView377, R.id.textView378, R.id.textView379, R.id.textView380, R.id.textView381, R.id.textView382,
             R.id.textView383};
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_save);
 
         for (int i = 0; i < listKotak.length; i++) {
-            int finalI = i;
-            ((TextView) findViewById(textviewid[i])).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listKotak[finalI] == 0) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.RED);
-                        listKotak[finalI] = 1;
-                    } else if (listKotak[finalI] == 1) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.YELLOW);
-                        listKotak[finalI] = 2;
-                    } else if (listKotak[finalI] == 2) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.GREEN);
-                        listKotak[finalI] = 3;
-                    } else if (listKotak[finalI] == 3) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.BLUE);
-                        listKotak[finalI] = 4;
-                    } else if (listKotak[finalI] == 4) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.CYAN);
-                        listKotak[finalI] = 5;
-                    } else if (listKotak[finalI] == 5) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.MAGENTA);
-                        listKotak[finalI] = 6;
-                    } else if (listKotak[finalI] == 6) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.GRAY);
-                        listKotak[finalI] = 7;
-                    } else if (listKotak[finalI] == 7) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.BLACK);
-                        listKotak[finalI] = 8;
-                    } else if (listKotak[finalI] == 8) {
-                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.WHITE);
-                        listKotak[finalI] = 0;
-                    }
-                    Log.d("key", String.valueOf(listKotak[finalI]));
-                }
-            });
+            GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+            Intent intent = getIntent();
+            gradientDrawable.setColor(color);
         }
 
-        resetbtn = findViewById(R.id.resetBtn);
-        resetbtn.setOnClickListener(new View.OnClickListener() {
+        backbtn = findViewById(R.id.backBtn);
+        backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = 0; i < listKotak.length; i++) {
-                    GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
-                    gradientDrawable.setColor(Color.WHITE);
-                    listKotak[i] = 0;
-                }
-            }
-        });
-
-        savebtn = findViewById(R.id.saveBtn);
-        savebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                for (int i = 0; i < listKotak.length; i++) {
-                    int color = getResources().getColor(textviewid[i]);
-                    Intent intent = new Intent(MainActivity.this,SaveActivity.class);
-                    intent.putExtra("color", color);
+                    Intent intent = new Intent(SaveActivity.this,MainActivity.class);
                     startActivity(intent);
-                }
             }
         });
-    }
-
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage("Do you want to exit ?");
-
-        builder.setTitle("Alert !");
-        builder.setCancelable(false);
-
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
     }
 }
