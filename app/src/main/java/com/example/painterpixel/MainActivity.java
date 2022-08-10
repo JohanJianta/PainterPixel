@@ -1,11 +1,22 @@
 package com.example.painterpixel;
 
+import static android.graphics.Color.BLACK;
+import static android.graphics.Color.BLUE;
+import static android.graphics.Color.CYAN;
+import static android.graphics.Color.GRAY;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.MAGENTA;
+import static android.graphics.Color.RED;
+import static android.graphics.Color.WHITE;
+import static android.graphics.Color.YELLOW;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -80,39 +91,39 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (listKotak[finalI] == 0) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.RED);
+                        gradientDrawable.setColor(RED);
                         listKotak[finalI] = 1;
                     } else if (listKotak[finalI] == 1) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.YELLOW);
+                        gradientDrawable.setColor(YELLOW);
                         listKotak[finalI] = 2;
                     } else if (listKotak[finalI] == 2) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.GREEN);
+                        gradientDrawable.setColor(GREEN);
                         listKotak[finalI] = 3;
                     } else if (listKotak[finalI] == 3) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.BLUE);
+                        gradientDrawable.setColor(BLUE);
                         listKotak[finalI] = 4;
                     } else if (listKotak[finalI] == 4) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.CYAN);
+                        gradientDrawable.setColor(CYAN);
                         listKotak[finalI] = 5;
                     } else if (listKotak[finalI] == 5) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.MAGENTA);
+                        gradientDrawable.setColor(MAGENTA);
                         listKotak[finalI] = 6;
                     } else if (listKotak[finalI] == 6) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.GRAY);
+                        gradientDrawable.setColor(GRAY);
                         listKotak[finalI] = 7;
                     } else if (listKotak[finalI] == 7) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.BLACK);
+                        gradientDrawable.setColor(BLACK);
                         listKotak[finalI] = 8;
                     } else if (listKotak[finalI] == 8) {
                         GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[finalI])).getBackground()).mutate();
-                        gradientDrawable.setColor(Color.WHITE);
+                        gradientDrawable.setColor(WHITE);
                         listKotak[finalI] = 0;
                     }
                     Log.d("key", String.valueOf(listKotak[finalI]));
@@ -126,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 for (int i = 0; i < listKotak.length; i++) {
                     GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
-                    gradientDrawable.setColor(Color.WHITE);
+                    gradientDrawable.setColor(WHITE);
                     listKotak[i] = 0;
                 }
             }
@@ -136,36 +147,10 @@ public class MainActivity extends AppCompatActivity {
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = 0; i < listKotak.length; i++) {
-                    String color = ((TextView) findViewById(textviewid[i])).getBackground().toString();
                     Intent intent = new Intent(MainActivity.this,SaveActivity.class);
-                    intent.putExtra("color", color);
+                    intent.putExtra("color", listKotak);
                     startActivity(intent);
-                }
             }
         });
-    }
-
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage("Do you want to exit ?");
-
-        builder.setTitle("Alert !");
-        builder.setCancelable(false);
-
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
     }
 }

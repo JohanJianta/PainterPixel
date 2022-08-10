@@ -1,10 +1,25 @@
 package com.example.painterpixel;
 
+import static android.graphics.Color.BLACK;
+import static android.graphics.Color.BLUE;
+import static android.graphics.Color.CYAN;
+import static android.graphics.Color.GRAY;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.MAGENTA;
+import static android.graphics.Color.RED;
+import static android.graphics.Color.WHITE;
+import static android.graphics.Color.YELLOW;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,7 +27,6 @@ import android.widget.TextView;
 public class SaveActivity extends AppCompatActivity {
 
     Button backbtn;
-    int[] listKotak = new int[384];
     int[] textviewid = new int[]{R.id.textView0, R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4, R.id.textView5, R.id.textView6,
             R.id.textView7, R.id.textView8, R.id.textView9, R.id.textView10, R.id.textView11, R.id.textView12, R.id.textView13, R.id.textView14,
             R.id.textView15, R.id.textView16, R.id.textView17, R.id.textView18, R.id.textView19, R.id.textView20, R.id.textView21, R.id.textView22,
@@ -68,9 +82,39 @@ public class SaveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save);
 
+        Intent intent = getIntent();
+        int [] listKotak = intent.getIntArrayExtra("color");
+
         for (int i = 0; i < listKotak.length; i++) {
-            GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
-            String color = getIntent().getStringExtra("color");
+                    if (listKotak[i] == 0) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(WHITE);
+                    } else if (listKotak[i] == 1) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(RED);
+                    } else if (listKotak[i] == 2) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(YELLOW);
+                    } else if (listKotak[i] == 3) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(GREEN);
+                    } else if (listKotak[i] == 4) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(BLUE);
+                    } else if (listKotak[i] == 5) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(CYAN);
+                    } else if (listKotak[i] == 6) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(MAGENTA);
+                    } else if (listKotak[i] == 7) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(GRAY);
+                    } else if (listKotak[i] == 8) {
+                        GradientDrawable gradientDrawable = (GradientDrawable) ((GradientDrawable) ((TextView) findViewById(textviewid[i])).getBackground()).mutate();
+                        gradientDrawable.setColor(BLACK);
+                    }
+                    Log.d("key", String.valueOf(listKotak[i]));
         }
 
         backbtn = findViewById(R.id.backBtn);

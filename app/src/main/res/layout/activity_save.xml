@@ -12,13 +12,13 @@
         android:id="@+id/backBtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#4CAF50"
-        app:layout_constraintDimensionRatio="3:1"
         android:text="Start New"
+        app:layout_constraintDimensionRatio="3:1"
         app:layout_constraintStart_toStartOf="@id/guideline6"
         app:layout_constraintEnd_toEndOf="@id/guideline12"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="20dp"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
