@@ -27,7 +27,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     Button resetbtn, savebtn;
-    int[] listKotak = new int[384];
+    int[] listKotak = new int[352];
     int[] textviewid = new int[]{R.id.textView0, R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4, R.id.textView5, R.id.textView6,
             R.id.textView7, R.id.textView8, R.id.textView9, R.id.textView10, R.id.textView11, R.id.textView12, R.id.textView13, R.id.textView14,
             R.id.textView15, R.id.textView16, R.id.textView17, R.id.textView18, R.id.textView19, R.id.textView20, R.id.textView21, R.id.textView22,
@@ -72,11 +72,7 @@ public class MainActivity extends AppCompatActivity {
             R.id.textView327, R.id.textView328, R.id.textView329, R.id.textView330, R.id.textView331, R.id.textView332, R.id.textView333, R.id.textView334,
             R.id.textView335, R.id.textView336, R.id.textView337, R.id.textView338, R.id.textView339, R.id.textView340, R.id.textView341, R.id.textView342,
             R.id.textView343, R.id.textView344, R.id.textView345, R.id.textView346, R.id.textView347, R.id.textView348, R.id.textView349, R.id.textView350,
-            R.id.textView351, R.id.textView352, R.id.textView353, R.id.textView354, R.id.textView355, R.id.textView356, R.id.textView357, R.id.textView358,
-            R.id.textView359, R.id.textView360, R.id.textView361, R.id.textView362, R.id.textView363, R.id.textView364, R.id.textView365, R.id.textView366,
-            R.id.textView367, R.id.textView368, R.id.textView369, R.id.textView370, R.id.textView371, R.id.textView372, R.id.textView373, R.id.textView374,
-            R.id.textView375, R.id.textView376, R.id.textView377, R.id.textView378, R.id.textView379, R.id.textView380, R.id.textView381, R.id.textView382,
-            R.id.textView383};
+            R.id.textView351};
 
 
     @Override
